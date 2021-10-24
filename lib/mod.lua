@@ -39,6 +39,14 @@ function screenshot()
   _norns.screen_export_png("/home/we/dust/APETOOLS-screenshot-" .. os.time() .. ".png")
 end
 
+function rerun()
+  norns.script.load(norns.state.script)
+
+end
+
+function r()
+  norns.script.load(norns.state.script)
+end
 
 
 

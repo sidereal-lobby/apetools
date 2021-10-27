@@ -40,12 +40,16 @@ function screenshot()
 end
 
 function rerun()
-  norns.script.load(norns.state.script)
-
+  local script = norns.state.script 
+  if script ~= nil and script ~= "" then
+    norns.script.load(norns.state.script)
+  else
+    print("NO SCRIPT TO RELOAD!")
+  end
 end
 
 function r()
-  norns.script.load(norns.state.script)
+  rerun()
 end
 
 

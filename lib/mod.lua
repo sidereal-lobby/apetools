@@ -5,6 +5,7 @@ local state = {
   version_major = 0,
   version_minor = 0,
   version_patch = 1,
+  last_script = nil
 }
 
 
@@ -23,6 +24,7 @@ end)
 
 mod.hook.register("script_pre_init", "APETOOLS PRE-INIT", function()
   print("APETOOLS PRE-INIT")
+  state.last_script = norns.state.script
 end)
 
 mod.hook.register("script_post_cleanup", "APETOOLS POST-CLEANUP", function()
@@ -39,17 +41,17 @@ function screenshot()
   _norns.screen_export_png("/home/we/dust/APETOOLS-screenshot-" .. os.time() .. ".png")
 end
 
-function rerun()
-  local script = norns.state.script 
+function rerun(safe)
+  local script = (safe ~= nil) and norns.state.script or state.last_script
   if script ~= nil and script ~= "" then
-    norns.script.load(norns.state.script)
+    norns.script.load(script)
   else
-    print("NO SCRIPT TO RELOAD!")
+    print("APETOOLS FOUND SCRIPT TO RELOAD!")
   end
 end
 
-function r()
-  rerun()
+function r(safe)
+  rerun(safe)
 end
 
 

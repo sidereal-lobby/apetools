@@ -46,7 +46,7 @@ function rerun(safe)
   if script ~= nil and script ~= "" then
     norns.script.load(script)
   else
-    print("APETOOLS FOUND SCRIPT TO RELOAD!")
+    print("APETOOLS DID NOT FIND SCRIPT TO RELOAD!")
   end
 end
 

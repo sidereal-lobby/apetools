@@ -50,6 +50,11 @@ function rerun(safe)
   end
 end
 
+function run(script)
+  -- TODO: check whether exists first, maybe?
+  norns.script.load("/home/we/dust/code/"..script.."/"..script..".lua")
+end
+
 function r(safe)
   rerun(safe)
 end
